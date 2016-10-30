@@ -1,0 +1,144 @@
+<html>
+
+<head>
+  <title>Hello Riot.</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>  
+</head>
+
+<body>
+  <!-- place the custom tag anywhere inside the body -->  
+  <questions></questions>
+
+  <attendees></attendees>
+ 
+ 	<feedbacks></feedbacks>
+ 	
+  <!-- include the tag -->
+  <script type="riot/tag" src="/admin/questions.tag"></script>
+  <script type="riot/tag" src="/admin/attendees.tag"></script>
+  <script type="riot/tag" src="/admin/feedbacks.tag"></script>
+  <script type="riot/tag" src="/admin/sample.tag"></script>
+  <script type="riot/tag" src="/admin/todo.html"></script>
+
+
+<!-- include riot.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.6.4/riot+compiler.min.js"></script>
+
+<!-- mount the tag -->
+<script>
+/*
+var url = "http://crossorigin.me/http://stockmarket.streamdata.io/prices";
+
+$.ajax({
+  dataType: "json",
+  url: url,
+  success: function(data) {
+	  console.dir(data);
+	  riot.mount('stockmarket-table', {title: 'Stocks', stocks: data});
+  }
+});
+*/
+
+$.ajax({
+  dataType: "json",
+  url: "/questions/1",
+  success: function(data) {
+	  console.log("data=");
+	  console.dir(data);
+	  riot.mount('questions', {title: 'Questions', questions: data});
+  }
+});
+
+$.ajax({
+  dataType: "json",
+  url: "/attendees/1",
+  success: function(data) {
+	  console.log("data=");
+	  console.dir(data);
+	  riot.mount('attendees', {title: 'Attendees', attendees: data});
+  }
+});
+	
+$.ajax({
+	  dataType: "json",
+	  url: "/feedbacks/1",
+	  success: function(data) {
+		  console.log("data=");
+		  console.dir(data);
+		  riot.mount('feedbacks', {title: 'Feedbacks', feedbacks: data});
+	  }
+	});
+   
+	// Wakeup example
+	/*
+	var receiver = riot.mount('receiver')
+	
+	function Timer() {
+	  riot.observable(this)
+	
+	  setTimeout(function() {
+	    this.trigger('ring')
+	  }.bind(this), 3000)
+	}
+	
+	var timer = new Timer();
+	
+	timer.on('ring', receiver[0].wakeup);  
+	*/
+
+/*	
+	var tags = riot.mount('rg-tabs', {
+		  tabs: {
+		  type: 'primary|secondary|success|error',
+		  tabs: [{
+		    heading: 'Tab one',
+		    text: 'This is tab one'
+		  }, {
+		    heading: 'Tab two',
+		    text: 'This is tab two',
+		    active: true
+		  }, {
+		    heading: 'Disabled tab',
+		    text: 'This is disabled tab',
+		    disabled: true
+		  }, {
+		    heading: 'Tab three',
+		    include: '/admin/hello.html'
+		  }]
+		  }
+		});
+	
+	tags[0].on('open', function (tab) { console.log('open', tab) })
+		       .on('loading', function (tab) { console.log('loading', tab) })
+		       .on('loaded', function (tab) { console.log('loaded', tab) })
+*/		       
+/*
+  $(function() {
+	$.ajax({
+	  dataType: "json",
+	  url: "/attendees",
+	  success: function(data) {
+		  console.log("data=");
+		  console.log(data);
+	  }
+	});
+
+	$.ajax({
+		  dataType: "json",
+		  url: "/questions",
+		  success: function(data) {
+			  console.log("data=");
+			  console.log(data);
+		  }
+		});
+
+  });
+*/
+</script>
+
+</body>
+
+</html>

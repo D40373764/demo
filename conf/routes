@@ -1,0 +1,30 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+GET     /attendees                  controllers.HomeController.getAttendeesByEvent
+GET 	/admin						controllers.Assets.at(path="/public/admin", file="index.html")
+
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET   	/admin/*file      			controllers.Assets.at(path:String="/public/admin", file:String)
+
+
+# BEACON STARTS HERE
+
+GET 	/questions/:eventID			controllers.BeaconController.getQuestionsByEvent(eventID: String)
+
+GET 	/attendees/:eventID			controllers.BeaconController.getAttendeesByEvent(eventID: String)
+
+GET 	/feedbacks/:eventID			controllers.BeaconController.getFeedbacksByEvent(eventID: String)
+
+POST 	/attendee					controllers.BeaconController.postAttendee
+
+POST 	/feedback					controllers.BeaconController.postFeedback

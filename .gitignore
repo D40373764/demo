@@ -1,0 +1,34 @@
+/.idea
+/.idea_modules
+
+# general
+*~
+*.log
+tmp
+dump
+
+# Eclipse
+.settings
+.cache
+.project
+.classpath
+.scala_dependencies
+bin
+
+# SBT
+dist
+project/boot
+projext/project
+project/target
+project/plugins/target
+project/.sbtserver
+project/.sbtserver.lock
+project/play-fork-run.sbt
+project/sbt-ui.sbt
+target
+.target
+.sbtserver/
+
+# Play
+logs
+RUNNING_PID
